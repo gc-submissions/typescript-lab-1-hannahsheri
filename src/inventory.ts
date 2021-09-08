@@ -11,12 +11,13 @@ let inventory: InventoryItem[] = [
     { product: { name: "LED", price: 1.00 }, quantity: 20 }
 ];
 
-export function calcInventoryValue(products: InventoryItem[]) {
-    //total value of all products in the array in inventory array as an argument
-    //if empty, return 0
-
-    //for each inventory item take the product price times the quantity, add all together
-
-    //call calcInventoryValue, passing it your inventory array as an argument
-    //store result of the return value in a variable and then console.log variable (170)
+export function calcInventoryValue(products: InventoryItem[]): number {
+    if (products.length === 0) {
+        return 0;
+    } else {
+        const total = products.reduce((a, b) => a + b.product.price * b.quantity, 0);
+        return total;
+    }
 }
+const inventoryResult: number = calcInventoryValue(inventory);
+console.log(inventoryResult);
